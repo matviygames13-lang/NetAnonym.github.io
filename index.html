@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Канал про моди для різних ігор.">
+  <title>Моди для ігор</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f5f2ef;
+      --muted: #aaa4a1;
+      --base: #090909;
+      --red: #f04438;
+      --line: #302a29;
+      font-family: "Manrope", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--base);
+      background-image: linear-gradient(90deg, #ffffff08 1px, transparent 1px), linear-gradient(#ffffff06 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .page {
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 0 88px;
+    }
+
+    .banner {
+      position: relative;
+      overflow: hidden;
+      height: clamp(250px, 40vw, 500px);
+      border-bottom: 3px solid var(--red);
+      background: #211311;
+      isolation: isolate;
+    }
+
+    .banner::after {
+      position: absolute;
+      z-index: -1;
+      background: linear-gradient(90deg, #0909099c, #09090920 58%, #09090948), linear-gradient(0deg, #09090955, transparent 38%);
+      content: "";
+      inset: 0;
+    }
+
+    .banner-image {
+      position: absolute;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 48%;
+      filter: brightness(0.78) contrast(1.08) saturate(0.88);
+      inset: 0;
+    }
+
+    .language-control {
+      position: absolute;
+      top: 22px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 5px 12px 5px 16px;
+      border: 1px solid var(--red);
+      background: #090909e8;
+      color: var(--ink);
+      box-shadow: 4px 4px 0 #f0443840;
+      backdrop-filter: blur(12px);
+    }
+
+    .language-control span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .language-control select {
+      max-width: 160px;
+      min-height: 42px;
+      padding: 5px 24px 5px 8px;
+      border: 0;
+      outline-offset: 3px;
+      color: var(--ink);
+      background: transparent;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .language-control option {
+      color: #f2f4ed;
+      background: #171b17;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.78fr) 1.22fr;
+      align-items: center;
+      gap: clamp(28px, 6vw, 76px);
+      width: min(1040px, calc(100% - 48px));
+      margin: clamp(38px, 8vw, 82px) auto 0;
+    }
+
+    .intro-image-wrap {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: #211d1c;
+    }
+
+    .intro-image-wrap::after {
+      position: absolute;
+      border: 2px solid var(--red);
+      content: "";
+      inset: 9px -9px -9px 9px;
+      pointer-events: none;
+    }
+
+    .intro-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .intro-copy::before {
+      display: block;
+      width: 38px;
+      height: 3px;
+      margin-bottom: 16px;
+      background: var(--red);
+      content: "";
+    }
+
+    h1 {
+      max-width: 620px;
+      margin: 0;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 62px;
+      font-weight: 700;
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    .intro-copy p {
+      margin: 18px 0 0;
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      h1 { font-size: 50px; }
+    }
+
+    @media (max-width: 640px) {
+      .banner { height: 280px; }
+
+      .language-control {
+        top: 12px;
+        right: 12px;
+        gap: 6px;
+        min-height: 46px;
+        padding: 4px 8px 4px 10px;
+      }
+
+      .language-control span { font-size: 10px; }
+      .language-control select { max-width: 136px; min-height: 40px; font-size: 13px; }
+
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 27px;
+        width: calc(100% - 36px);
+        margin-top: 38px;
+      }
+
+      .intro-image-wrap {
+        width: min(82%, 380px);
+        aspect-ratio: 16 / 10;
+      }
+
+      h1 { font-size: 43px; }
+      .intro-copy p { font-size: 12px; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .intro-image-wrap, .intro-copy { animation: arrive 650ms ease-out both; }
+      .intro-copy { animation-delay: 100ms; }
+
+      @keyframes arrive {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="banner" aria-label="Банер каналу">
+      <img class="banner-image" src="https://i.pinimg.com/1200x/b5/bd/7e/b5bd7e43cc303258ea6e275ef9848d9b.jpg" alt="">
+      <label class="language-control">
+        <span data-label="language">Мова</span>
+        <select id="language" aria-label="Мова сторінки">
+          <option value="uk" selected>Українська</option>
+          <option value="en">English</option>
+          <option value="ru">Русский</option>
+          <option value="pl">Polski</option>
+          <option value="de">Deutsch</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+          <option value="it">Italiano</option>
+          <option value="ja">日本語</option>
+          <option value="zh">简体中文</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="intro" aria-labelledby="welcome">
+      <div class="intro-image-wrap">
+        <img class="intro-image" src="https://i.pinimg.com/736x/b6/67/ad/b667ade766989c7f532543456e949326.jpg" alt="" loading="lazy">
+      </div>
+      <div class="intro-copy">
+        <h1 id="welcome">Привіт, цей канал про моди для різних ігор, погнали!</h1>
+        <p data-label="channel">Моди · Ігри · Нові можливості</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const translations = {
+      uk: { language: "Мова", welcome: "Привіт, цей канал про моди для різних ігор, погнали!", channel: "Моди · Ігри · Нові можливості", title: "Моди для ігор" },
+      en: { language: "Language", welcome: "Hi! This channel is about mods for different games. Let's go!", channel: "Mods · Games · New possibilities", title: "Game Mods" },
+      ru: { language: "Язык", welcome: "Привет! Этот канал о модах для разных игр, погнали!", channel: "Моды · Игры · Новые возможности", title: "Моды для игр" },
+      pl: { language: "Język", welcome: "Cześć! Ten kanał jest o modach do różnych gier. Zaczynamy!", channel: "Mody · Gry · Nowe możliwości", title: "Mody do gier" },
+      de: { language: "Sprache", welcome: "Hi! Auf diesem Kanal geht es um Mods für verschiedene Spiele. Los geht's!", channel: "Mods · Spiele · Neue Möglichkeiten", title: "Spiel-Mods" },
+      fr: { language: "Langue", welcome: "Salut ! Cette chaîne parle de mods pour différents jeux. C'est parti !", channel: "Mods · Jeux · Nouvelles possibilités", title: "Mods de jeux" },
+      es: { language: "Idioma", welcome: "¡Hola! Este canal trata sobre mods para distintos juegos. ¡Vamos!", channel: "Mods · Juegos · Nuevas posibilidades", title: "Mods de videojuegos" },
+      it: { language: "Lingua", welcome: "Ciao! Questo canale parla di mod per diversi giochi. Si parte!", channel: "Mod · Giochi · Nuove possibilità", title: "Mod per giochi" },
+      ja: { language: "言語", welcome: "こんにちは！さまざまなゲームのMODを紹介するチャンネルです。さあ、始めよう！", channel: "MOD · ゲーム · 新しい可能性", title: "ゲームMOD" },
+      zh: { language: "语言", welcome: "你好！这里分享各种游戏的模组，一起开始吧！", channel: "模组 · 游戏 · 更多可能", title: "游戏模组" }
+    };
+
+    const languageSelect = document.querySelector("#language");
+
+    languageSelect.addEventListener("change", () => {
+      const language = languageSelect.value;
+      const copy = translations[language];
+      document.documentElement.lang = language;
+      document.title = copy.title;
+      document.querySelector("#welcome").textContent = copy.welcome;
+      document.querySelector('[data-label="language"]').textContent = copy.language;
+      document.querySelector('[data-label="channel"]').textContent = copy.channel;
+    });
+  </script>
+</body>
+</html>
